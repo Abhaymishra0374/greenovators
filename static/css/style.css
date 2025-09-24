@@ -1,0 +1,335 @@
+/* CSS Variables for Solarized Dark Theme */
+:root {
+  --base03:    #002b36; /* Darkest Background */
+  --base02:    #073642; /* Lighter Background (for surfaces) */
+  --base01:    #586e75; /* Content - subtle text */
+  --base00:    #657b83; /* Content - main text */
+  --base2:     #eee8d5; /* Content - headings, bright text */
+  --yellow:    #b58900; /* Accent */
+  --orange:    #cb4b16; /* Accent for warnings/danger */
+  --cyan:      #2aa198; /* Main Accent */
+  --blue:      #268bd2; /* Links, focus rings */
+}
+
+/* General Reset & Body Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--base03);
+  color: var(--base00);
+  line-height: 1.6;
+}
+body {
+  /* -- Background Image and Overlay -- */
+  background-color: var(--base03); /* Fallback color */
+  background-image:
+    /* Semi-transparent color overlay to ensure text is readable */
+    linear-gradient(rgba(0, 43, 54, 0.97), rgba(0, 43, 54, 0.97)),
+    /* Your logo */
+    url('../images/greenovators_logo.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain; /* Ensures the entire logo is visible */
+  background-attachment: fixed; /* Keeps the background static on scroll */
+
+  /* -- Sticky Footer Flexbox Layout -- */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures body takes up at least the full viewport height */
+
+  color: var(--base00);
+  line-height: 1.6;
+}
+
+/* ... (keep your header and nav styles) ... */
+
+
+/* Main Content with Fade-In Animation */
+main {
+  flex-grow: 1; /* This is the key change: forces the main content to fill available space */
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  width: 100%; /* Ensures main content doesn't shrink unnecessarily */
+  animation: contentFadeIn 0.6s ease-out forwards;
+}
+/* Header + Nav */
+header {
+  background: var(--base02);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--base03);
+}
+
+header .website-logo {
+  height: 60px;
+}
+
+/* Navigation Link Animation */
+nav a {
+  color: var(--base00);
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--base2);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--cyan);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Main Content with Fade-In Animation */
+main {
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  animation: contentFadeIn 0.6s ease-out forwards;
+}
+
+h2 {
+  color: var(--base2);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--base01);
+  padding-bottom: 10px;
+}
+
+/* Buttons */
+button, .btn {
+  background: var(--cyan);
+  color: var(--base03);
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: #39b2a9; /* Lighter cyan */
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(42, 161, 152, 0.2);
+}
+
+/* Forms with Hover and Focus Effects */
+form {
+  background: var(--base02);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin: 25px 0;
+  border: 1px solid var(--base03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--base01);
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid var(--base03);
+  border-radius: 8px;
+  background: var(--base03);
+  color: var(--base00);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(38, 139, 210, 0.3);
+}
+
+/* Tables with Row Hover Animation */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  border: 1px solid var(--base03);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th, table td {
+  border-bottom: 1px solid var(--base03);
+  padding: 15px;
+  text-align: center;
+}
+
+table th {
+  background: var(--base02);
+  color: var(--yellow);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--base03);
+}
+
+table tr {
+  transition: background-color 0.3s ease;
+}
+
+table tr:nth-child(even) {
+  background: #06313d; /* Slightly different shade for zebra striping */
+}
+
+table tr:hover {
+  background-color: var(--base03);
+}
+
+table td a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table td a:hover {
+  color: #39b2a9;
+  text-decoration: underline;
+}
+
+/* Flash Messages */
+.flash-messages {
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.flash-messages li {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  color: var(--base2);
+  font-weight: 500;
+  animation: slideInAndFade 0.5s ease-out forwards;
+}
+
+.flash-messages li.success { background: var(--cyan); color: var(--base03); }
+.flash-messages li.danger  { background: var(--orange); }
+.flash-messages li.info    { background: var(--blue); }
+.flash-messages li.warning { background: var(--yellow); color: var(--base03); }
+
+/* Animation Keyframes */
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInAndFade {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Footer */
+footer {
+  background: var(--base02);
+  color: var(--base01);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid var(--base03);
+}
+
+/* In styles.css */
+.user-score-display {
+  background-color: var(--base02);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.user-score-display h3 {
+  margin: 0;
+  color: var(--base2);
+}
+
+.user-score-display strong {
+  color: var(--yellow);
+  font-size: 1.5rem;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.reward-card {
+  background-color: var(--base02);
+  border: 1px solid var(--base03);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reward-card h4 {
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+.reward-card p {
+  flex-grow: 1;
+  margin-bottom: 15px;
+  color: var(--base01);
+}
+
+.reward-cost {
+  font-weight: bold;
+  color: var(--yellow);
+  margin-bottom: 15px;
+}
+
+.btn-disabled {
+  background-color: var(--base01);
+  color: var(--base03);
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: not-allowed;
+}

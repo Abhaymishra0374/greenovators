@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rewards</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block title %}Reward Store{% endblock %}
+
+{% block content %}
+  <h2>🏆 Reward Store</h2>
+  <div class="user-score-display">
+    <h3>Your Current Score: <strong>{{ user.credit_score }}</strong></h3>
+  </div>
+
+  <div class="rewards-grid">
+    {% for reward in rewards %}
+      <div class="reward-card">
+        <h4>{{ reward.name }}</h4>
+        <p>{{ reward.description }}</p>
+        <div class="reward-cost">Cost: {{ reward.cost }} points</div>
+
+        <form action="{{ url_for('redeem_reward', reward_id=reward.reward_id) }}" method="POST">
+          {% if user.credit_score >= reward.cost %}
+            <button type="submit" class="btn">Redeem</button>
+          {% else %}
+            <button type="button" class="btn-disabled" disabled>Not Enough Points</button>
+          {% endif %}
+        </form>
+      </div>
+    {% else %}
+      <p>No rewards available at the moment. Check back soon!</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+</body>
+</html>
