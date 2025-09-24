@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+Flask==2.3.2
+mysql-connector-python==8.1.0
+python-dotenv==1.0.0
+Werkzeug==3.0.0
+gunicode
+=======
+Flask==2.3.2
+mysql-connector-python==8.1.0
+python-dotenv==1.0.0
+Werkzeug==3.0.0
+gunicode
+>>>>>>> 272323bd8095d6cb6d7a47f0b777f276570e3d22
